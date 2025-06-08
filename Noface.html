@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不要脸 - 趣味人脸遮挡工具</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>不要脸</h1>
+            <p>趣味人脸遮挡工具</p>
+            <div class="instructions">
+                <p>使用说明：上传一张包含人脸的图片，我们会自动为您添加有趣的表情遮挡。</p>
+                <p>支持格式：JPG、PNG、GIF（静态）</p>
+            </div>
+        </header>
+        
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="dropZone">
+                    <input type="file" id="fileInput" accept="image/jpeg,image/png,image/gif" hidden>
+                    <div class="upload-content">
+                        <svg width="50" height="50" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                        </svg>
+                        <p>点击或拖拽图片到这里</p>
+                        <p class="upload-hint">支持 JPG、PNG、GIF 格式</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-section" hidden>
+                <div class="emoji-selector">
+                    <p>选择表情：</p>
+                    <div class="emoji-list">
+                        <button class="emoji-btn" data-emoji="😊">😊</button>
+                        <button class="emoji-btn" data-emoji="😎">😎</button>
+                        <button class="emoji-btn" data-emoji="🤪">🤪</button>
+                        <button class="emoji-btn" data-emoji="🤡">🤡</button>
+                        <button class="emoji-btn" data-emoji="👻">👻</button>
+                    </div>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="outputCanvas"></canvas>
+                </div>
+                <div class="controls">
+                    <button id="downloadBtn" class="btn primary">下载图片</button>
+                    <button id="resetBtn" class="btn secondary">重新上传</button>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h2>最近处理</h2>
+                <div class="history-list" id="historyList">
+                    <!-- 历史记录将通过JavaScript动态添加 -->
+                </div>
+            </div>
+        </main>
+
+        <div class="loading" hidden>
+            <div class="spinner"></div>
+            <p>正在处理中...</p>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
